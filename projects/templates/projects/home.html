@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Hi, I'm Yash Verma.</h1>
+      <p class="lead text-muted">I am a Software Engineer Student. </p>
+      <p>
+        <a href="mailto:yverma32@gmail.com" class="btn btn-primary my-2">Email Me</a>
+      </p>
+      <img src="{% static 'mypic.jpg' %}" height="500">
+      <hr>
+    </div>
+  </div>
+</section>
+
+
+<h1 class="text-center">PROJECTS</h1>
+<hr>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        {% for project in projects.all %}
+        <div class="col-md-4 px-3">
+          <div class="card mb-4 box-shadow-sm" onclick="window.location='{% url 'detail' project.id %}';" style="cursor: pointer;">
+            <img class="card-img-top img-fluid" src="{{ project.image.url }}">
+            <div class="card-body">
+              <p class="card-text text-center">{{ project.title }}</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
